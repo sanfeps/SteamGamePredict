@@ -1,0 +1,214 @@
+
+================================================================================
+ANÁLISIS DE FEATURES - ¿QUÉ INFORMACIÓN USARÁ EL MODELO?
+================================================================================
+
+Cargando dataset desde: data\raw\steam_games.csv
+OK - Dataset cargado: 27075 juegos, 18 columnas
+
+================================================================================
+1. VARIABLES NUMÉRICAS DIRECTAS (usadas tal cual, solo escaladas)
+================================================================================
+
+Total: 8 variables numéricas
+
+  ✓ price                     | Valores:  27075 | Missing:   0.0% | Rango: [0.0, 422.0] | Mediana: 4.0
+  ✓ positive_ratings          | Valores:  27075 | Missing:   0.0% | Rango: [0.0, 2644404.0] | Mediana: 24.0
+  ✓ negative_ratings          | Valores:  27075 | Missing:   0.0% | Rango: [0.0, 487076.0] | Mediana: 9.0
+  ✓ average_playtime          | Valores:  27075 | Missing:   0.0% | Rango: [0.0, 190625.0] | Mediana: 0.0
+  ✓ median_playtime           | Valores:  27075 | Missing:   0.0% | Rango: [0.0, 190625.0] | Mediana: 0.0
+  ✓ achievements              | Valores:  27075 | Missing:   0.0% | Rango: [0.0, 9821.0] | Mediana: 7.0
+  ✓ required_age              | Valores:  27075 | Missing:   0.0% | Rango: [0.0, 18.0] | Mediana: 0.0
+  ✓ english                   | Valores:  27075 | Missing:   0.0% | Rango: [0.0, 1.0] | Mediana: 1.0
+
+================================================================================
+2. FEATURES ENGINEERED (creadas automáticamente)
+================================================================================
+
+Total: 8 features engineered
+
+  ✓ positive_ratio            | Proporción de ratings positivos     | Ejemplo: 0.760           | Rango: [0.000, 1.000]
+  ✓ total_ratings             | Total de valoraciones               | Ejemplo: 36              | Rango: [1, 3046717]
+  ✓ is_free                   | Si es gratis (0 o 1)                | Ejemplo: 1 para 9.5% de juegos | Rango: [0, 1]
+  ✓ genre_count               | Número de géneros del juego         | Ejemplo: 3               | Rango: [1, 16]
+  ✓ platform_count            | Número de plataformas               | Ejemplo: 1               | Rango: [1, 3]
+  ✓ release_year              | Año de lanzamiento                  | Ejemplo: 2017            | Rango: [1997, 2019]
+  ✓ release_month             | Mes de lanzamiento (1-12)           | Ejemplo: Mayo = 5        | Rango: [1, 12]
+  ✓ release_quarter           | Trimestre (1-4)                     | Ejemplo: Q2 = 2          | Rango: [1, 4]
+
+================================================================================
+3. GÉNEROS (One-Hot Encoding) - Top 20 más frecuentes
+================================================================================
+
+Total géneros únicos encontrados: 29
+Se usarán los top 20 más frecuentes como features binarias (0/1):
+
+   1. genres_Indie                        | Aparece en  19421 juegos ( 71.7%)
+   2. genres_Action                       | Aparece en  11903 juegos ( 44.0%)
+   3. genres_Casual                       | Aparece en  10210 juegos ( 37.7%)
+   4. genres_Adventure                    | Aparece en  10032 juegos ( 37.1%)
+   5. genres_Strategy                     | Aparece en   5247 juegos ( 19.4%)
+   6. genres_Simulation                   | Aparece en   5194 juegos ( 19.2%)
+   7. genres_RPG                          | Aparece en   4311 juegos ( 15.9%)
+   8. genres_Early_Access                 | Aparece en   2954 juegos ( 10.9%)
+   9. genres_Free_to_Play                 | Aparece en   1704 juegos (  6.3%)
+  10. genres_Sports                       | Aparece en   1322 juegos (  4.9%)
+  11. genres_Racing                       | Aparece en   1024 juegos (  3.8%)
+  12. genres_Violent                      | Aparece en    843 juegos (  3.1%)
+  13. genres_Massively_Multiplayer        | Aparece en    723 juegos (  2.7%)
+  14. genres_Gore                         | Aparece en    537 juegos (  2.0%)
+  15. genres_Nudity                       | Aparece en    266 juegos (  1.0%)
+  16. genres_Sexual_Content               | Aparece en    245 juegos (  0.9%)
+  17. genres_Utilities                    | Aparece en    146 juegos (  0.5%)
+  18. genres_Design_and_Illustration      | Aparece en     87 juegos (  0.3%)
+  19. genres_Animation_and_Modeling       | Aparece en     79 juegos (  0.3%)
+  20. genres_Education                    | Aparece en     51 juegos (  0.2%)
+
+================================================================================
+4. CATEGORÍAS (One-Hot Encoding) - Top 20 más frecuentes
+================================================================================
+
+Total categorías únicas encontradas: 29
+Se usarán las top 20 más frecuentes como features binarias (0/1):
+
+   1. categories_Single_player                      | Aparece en  25678 juegos ( 94.8%)
+   2. categories_Steam_Achievements                 | Aparece en  14130 juegos ( 52.2%)
+   3. categories_Steam_Trading_Cards                | Aparece en   7918 juegos ( 29.2%)
+   4. categories_Steam_Cloud                        | Aparece en   7219 juegos ( 26.7%)
+   5. categories_Full_controller_support            | Aparece en   5695 juegos ( 21.0%)
+   6. categories_Partial_Controller_Support         | Aparece en   4234 juegos ( 15.6%)
+   7. categories_Multi_player                       | Aparece en   3974 juegos ( 14.7%)
+   8. categories_Steam_Leaderboards                 | Aparece en   3439 juegos ( 12.7%)
+   9. categories_Online_Multi_Player                | Aparece en   2487 juegos (  9.2%)
+  10. categories_Shared/Split_Screen                | Aparece en   2152 juegos (  7.9%)
+  11. categories_Stats                              | Aparece en   1878 juegos (  6.9%)
+  12. categories_Co_op                              | Aparece en   1721 juegos (  6.4%)
+  13. categories_Local_Multi_Player                 | Aparece en   1615 juegos (  6.0%)
+  14. categories_Cross_Platform_Multiplayer         | Aparece en   1081 juegos (  4.0%)
+  15. categories_Online_Co_op                       | Aparece en   1071 juegos (  4.0%)
+  16. categories_Local_Co_op                        | Aparece en   1059 juegos (  3.9%)
+  17. categories_Includes_level_editor              | Aparece en   1036 juegos (  3.8%)
+  18. categories_Steam_Workshop                     | Aparece en    897 juegos (  3.3%)
+  19. categories_Captions_available                 | Aparece en    721 juegos (  2.7%)
+  20. categories_In_App_Purchases                   | Aparece en    690 juegos (  2.5%)
+
+================================================================================
+5. PLATAFORMAS (One-Hot Encoding)
+================================================================================
+
+Plataformas encontradas:
+
+  1. platforms_windows              | Aparece en  27070 juegos (100.0%)
+  2. platforms_mac                  | Aparece en   8066 juegos ( 29.8%)
+  3. platforms_linux                | Aparece en   5235 juegos ( 19.3%)
+
+================================================================================
+6. DEVELOPERS (One-Hot Encoding) - Top 20 más prolíficos
+================================================================================
+
+Total developers únicos: 17112
+Se usarán los top 20 más prolíficos como features binarias (0/1):
+
+   1. developer_Choice_of_Games                     |   94 juegos (  0.3%)
+   2. developer_KOEI_TECMO_GAMES_CO.,_LTD.          |   72 juegos (  0.3%)
+   3. developer_Ripknot_Systems                     |   62 juegos (  0.2%)
+   4. developer_Laush_Dmitriy_Sergeevich            |   51 juegos (  0.2%)
+   5. developer_Nikita_"Ghost_RUS"                  |   50 juegos (  0.2%)
+   6. developer_Dexion_Games                        |   45 juegos (  0.2%)
+   7. developer_RewindApp                           |   43 juegos (  0.2%)
+   8. developer_Hosted_Games                        |   42 juegos (  0.2%)
+   9. developer_Blender_Games                       |   40 juegos (  0.1%)
+  10. developer_Humongous_Entertainment             |   36 juegos (  0.1%)
+  11. developer_For_Kids                            |   36 juegos (  0.1%)
+  12. developer_EnsenaSoft                          |   35 juegos (  0.1%)
+  13. developer_Nekyau_Games                        |   32 juegos (  0.1%)
+  14. developer_Eipix_Entertainment                 |   32 juegos (  0.1%)
+  15. developer_Warfare_Studios                     |   31 juegos (  0.1%)
+  16. developer_HeR_Interactive                     |   30 juegos (  0.1%)
+  17. developer_MumboJumbo                          |   29 juegos (  0.1%)
+  18. developer_Creobit                             |   28 juegos (  0.1%)
+  19. developer_ERS_G_Studios                       |   28 juegos (  0.1%)
+  20. developer_HexWar_Games                        |   27 juegos (  0.1%)
+
+================================================================================
+7. PUBLISHERS (One-Hot Encoding) - Top 20 más prolíficos
+================================================================================
+
+Total publishers únicos: 14353
+Se usarán los top 20 más prolíficos como features binarias (0/1):
+
+   1. publisher_Big_Fish_Games                      |  212 juegos (  0.8%)
+   2. publisher_Strategy_First                      |  136 juegos (  0.5%)
+   3. publisher_Ubisoft                             |  111 juegos (  0.4%)
+   4. publisher_THQ_Nordic                          |   98 juegos (  0.4%)
+   5. publisher_Square_Enix                         |   97 juegos (  0.4%)
+   6. publisher_Sekai_Project                       |   96 juegos (  0.4%)
+   7. publisher_Choice_of_Games                     |   94 juegos (  0.3%)
+   8. publisher_1C_Entertainment                    |   88 juegos (  0.3%)
+   9. publisher_Dagestan_Technology                 |   88 juegos (  0.3%)
+  10. publisher_SEGA                                |   78 juegos (  0.3%)
+  11. publisher_Degica                              |   77 juegos (  0.3%)
+  12. publisher_Plug_In_Digital                     |   72 juegos (  0.3%)
+  13. publisher_KOEI_TECMO_GAMES_CO.,_LTD.          |   71 juegos (  0.3%)
+  14. publisher_KISS_ltd                            |   71 juegos (  0.3%)
+  15. publisher_Slitherine_Ltd.                     |   71 juegos (  0.3%)
+  16. publisher_AGM_PLAYISM                         |   69 juegos (  0.3%)
+  17. publisher_Artifex_Mundi                       |   67 juegos (  0.2%)
+  18. publisher_Buka_Entertainment                  |   66 juegos (  0.2%)
+  19. publisher_Devolver_Digital                    |   65 juegos (  0.2%)
+  20. publisher_Atriagames                          |   64 juegos (  0.2%)
+
+================================================================================
+8. VARIABLE OBJETIVO (no se usa como input, es lo que predecimos)
+================================================================================
+
+📊 Distribución de propietarios:
+
+  Mínimo:   10,000 propietarios
+  Mediana:  10,000 propietarios
+  Media:    134,090 propietarios
+  Máximo:   150,000,000 propietarios
+
+🎯 Clasificación (threshold = 100,000 propietarios):
+  Exitosos (≥100k):      3725 juegos (13.8%)
+  No exitosos (<100k):  23350 juegos (86.2%)
+
+================================================================================
+📊 RESUMEN FINAL DE FEATURES
+================================================================================
+
+  1. Variables numéricas directas:       8 features
+  2. Features engineered:                 8 features
+  3. Géneros (one-hot):                  20 features
+  4. Categorías (one-hot):               20 features
+  5. Plataformas (one-hot):               3 features
+  6. Developers (one-hot):               20 features
+  7. Publishers (one-hot):               20 features
+  ------------------------------------------------------------
+  TOTAL DE FEATURES (INPUT AL MODELO):   99 features
+
+================================================================================
+✅ CONCLUSIÓN SOBRE LA INFORMACIÓN
+================================================================================
+
+El modelo tiene acceso a:
+  ✓ Información de precio y modelo de negocio
+  ✓ Métricas de engagement (ratings, playtime)
+  ✓ Características técnicas del juego (géneros, categorías)
+  ✓ Alcance de plataforma
+  ✓ Reputación del desarrollador/publisher
+  ✓ Contexto temporal (cuándo se lanzó)
+  ✓ Features derivadas que capturan calidad percibida
+
+💡 Con 99 features, el modelo tiene INFORMACIÓN SUFICIENTE para:
+  • Distinguir entre juegos indie y AAA
+  • Capturar tendencias de género/categoría populares
+  • Identificar publishers/developers exitosos
+  • Considerar el modelo de negocio (F2P vs pago)
+  • Evaluar la calidad percibida (positive_ratio)
+  • Detectar patrones temporales (año de lanzamiento)
+
+✅ 99 features es un número ÓPTIMO para este tipo de problema.
+
+================================================================================
+
