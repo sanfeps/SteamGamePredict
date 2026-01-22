@@ -257,12 +257,6 @@ Este proyecto está alineado con los contenidos de:
 
 ---
 
-## 👥 Autores
-
-Javier Sancho Alvarez
-
----
-
 ## 📝 Licencia
 
 Este proyecto es de carácter académico.
